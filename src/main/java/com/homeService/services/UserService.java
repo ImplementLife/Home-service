@@ -24,10 +24,14 @@ import java.util.Optional;
 
 @Component
 public class UserService implements UserDetailsService {
-    @PersistenceContext private EntityManager em;
-    @Autowired private UserDao userDao;
-    @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired private ProductService productService;
+    @PersistenceContext
+    private EntityManager em;
+    @Autowired
+    private UserDao userDao;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private ProductService productService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -48,7 +52,9 @@ public class UserService implements UserDetailsService {
     public boolean saveUser(User user, Role role) {
         User userFromDB = userDao.findByUsername(user.getUsername());
 
-        if (userFromDB != null) return false;
+        if (userFromDB != null) {
+            return false;
+        }
 
         user.setRoles(Collections.singleton(role));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

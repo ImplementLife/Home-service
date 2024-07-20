@@ -15,7 +15,9 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails, Comparable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     /**

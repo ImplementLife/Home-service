@@ -77,7 +77,7 @@ function send() {
     //Способ и адрес доставки
     finalObject.delivery = new Object();
     let delivery = document.getElementsByName("delivery");
-    let address = document.getElementsByName("address");
+    let address = document.getElementsByName("region");
     for (var i = 0; i < delivery.length; i++) {
         if (delivery[i].checked) {
             finalObject.delivery.method = delivery[i].value;

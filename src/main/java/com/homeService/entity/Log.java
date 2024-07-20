@@ -9,7 +9,9 @@ import java.util.Date;
 @Entity
 @Table(name = "system_log")
 public class Log {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     @Type(type = "text") private String text;
     private Date date;

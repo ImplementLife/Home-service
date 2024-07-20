@@ -21,9 +21,9 @@ public class UserController {
 
     @GetMapping("/addToCF")
     public @ResponseBody String addToCF(
-    Principal principal,
-    @RequestParam String productsCart,
-    @RequestParam String type
+        Principal principal,
+        @RequestParam String productsCart,
+        @RequestParam String type
     ) throws Exception {
         if (principal != null) {
             if (type != null && !type.isEmpty()) {
@@ -60,9 +60,9 @@ public class UserController {
 
     @GetMapping("/removeFromCF")
     public @ResponseBody String removeFromCF(
-    Principal principal,
-    @RequestParam String productsCart,
-    @RequestParam String type
+        Principal principal,
+        @RequestParam String productsCart,
+        @RequestParam String type
     ) throws Exception {
         if (principal != null) {
             if (type != null && !type.isEmpty()) {
@@ -95,8 +95,9 @@ public class UserController {
 
     @GetMapping("/getCF")
     public @ResponseBody String getCF(
-    Principal principal,
-    @RequestParam String type) {
+        Principal principal,
+        @RequestParam String type
+    ) {
         if (principal != null) {
             User currentUser = (User) ((Authentication) principal).getPrincipal();
             if (type != null && !type.isEmpty()) {

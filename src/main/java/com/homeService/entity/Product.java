@@ -9,7 +9,9 @@ import java.util.TreeMap;
 @Entity
 @Table(name = "products")
 public class Product implements Comparable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     private String name;

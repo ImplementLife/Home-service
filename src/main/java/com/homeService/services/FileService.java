@@ -1,6 +1,6 @@
 package com.homeService.services;
 
-import com.homeService.config.MvcConfig;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,7 +12,8 @@ import java.util.ArrayList;
 
 @Component
 public class FileService {
-    public static String PATH_IMAGE = MvcConfig.PATH_IMAGE;
+    @Value("${il.path.images}")
+    private String pathImages;
 
     public ArrayList<String> save(MultipartFile[] files) throws IOException {
         ArrayList<String> result = new ArrayList<>();
@@ -29,14 +30,14 @@ public class FileService {
             try {
                 String exe = f.getOriginalFilename().substring(f.getOriginalFilename().lastIndexOf('.'));
                 name = System.nanoTime() + '(' + num + ')' + exe;
-                File downFile = new File(PATH_IMAGE + name);
+                File downFile = new File(pathImages + name);
                 byte[] bytes = f.getBytes();
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(downFile));
                 stream.write(bytes);
                 stream.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                throw new IOException("Ошибка записи файла '" + f.getOriginalFilename() + "' new name: '" + name + "' PATH: '" + PATH_IMAGE + "';");
+                throw new IOException("Ошибка записи файла '" + f.getOriginalFilename() + "' new name: '" + name + "' PATH: '" + pathImages + "';");
             }
         } else {
             throw new IOException("Файл: " + f.getOriginalFilename() + " пустой");

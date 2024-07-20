@@ -65,6 +65,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")// указываем URL логаута
                 .logoutSuccessUrl("/login?logout")// указываем URL при удачном логауте
                 .invalidateHttpSession(true); // делаем не валидной текущую сессию
+
+        https
+            .headers()
+            .frameOptions().disable();
     }
 
 

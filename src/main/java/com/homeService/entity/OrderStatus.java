@@ -5,7 +5,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "order_status")
 public class OrderStatus {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     private String name;

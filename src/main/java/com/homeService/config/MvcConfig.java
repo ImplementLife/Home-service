@@ -1,5 +1,6 @@
 package com.homeService.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -8,8 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
-    public static final String PATH_IMAGE = "/home/images/";
-
+    @Value("${il.path.images}")
+    private String pathImages;
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("auth/login/index");
@@ -20,9 +21,10 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/com/**").addResourceLocations("content/commons/").setCachePeriod(0);
         registry.addResourceHandler("/resource/**").addResourceLocations("content/pages/").setCachePeriod(0);
-        System.err.println(PATH_IMAGE);
+        System.err.println(pathImages);
 //        registry.addResourceHandler("/ProductImages/**").addResourceLocations("content/images/").setCachePeriod(0);
-        registry.addResourceHandler("/ProductImages/**").addResourceLocations("file://" + PATH_IMAGE).setCachePeriod(0);
+        registry.addResourceHandler("/ProductImages/**").addResourceLocations("file:///" + pathImages).setCachePeriod(0); // For Windows
+//        registry.addResourceHandler("/ProductImages/**").addResourceLocations("file://" + pathImages).setCachePeriod(0); // For Linux
     }
 
     @Override

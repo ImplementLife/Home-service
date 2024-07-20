@@ -7,6 +7,7 @@ import com.homeService.lib.myJSON.MyJsonObject;
 import com.homeService.services.transientInitiators.ProductInitiator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.util.ArrayList;
@@ -17,10 +18,12 @@ import java.util.TreeMap;
 /**
  * Во время реализации не забывать про необходимость преобразовывать JSON в объекты
  */
-@Component
+@Service
 public class ProductService {
-    @Autowired ProductDao productDao;
-    @Autowired ProductInitiator initiator;
+    @Autowired
+    private ProductDao productDao;
+    @Autowired
+    private ProductInitiator initiator;
 
     public Product findById(Long id) {
         Optional<Product> userFromDb = productDao.findById(id);
