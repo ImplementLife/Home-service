@@ -1,10 +1,19 @@
 package com.homeService.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.TreeMap;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 @Table(name = "products")
@@ -31,108 +40,10 @@ public class Product implements Comparable {
     @Transient private boolean isInCart;
     @Transient private String defaultPrice;
     /*===================================*/
-    public Product() {}
-
-    /*===   Not @Transient   ===*/
-
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getArticle() {
-        return article;
-    }
-    public void setArticle(String article) {
-        this.article = article;
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public boolean isPublic() {
-        return isPublic;
-    }
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCharacteristicsJSON() {
-        return characteristicsJSON;
-    }
-    public void setCharacteristicsJSON(String characteristicsJSON) {
-        this.characteristicsJSON = characteristicsJSON;
-    }
-
-    public String getPriceListJSON() {
-        return priceListJSON;
-    }
-    public void setPriceListJSON(String priceListJSON) {
-        this.priceListJSON = priceListJSON;
-    }
-
-    public String getImagesJSON() {
-        return imagesJSON;
-    }
-    public void setImagesJSON(String imagesJSON) {
-        this.imagesJSON = imagesJSON;
-    }
-
-    public String getDefaultPrice() {
-        return defaultPrice;
-    }
-    public void setDefaultPrice(String defaultPrice) {
-        this.defaultPrice = defaultPrice;
-    }
-
-    /*===   @Transient   ===*/
-    public TreeMap<Integer, Discount> getOptPrices() {
-        return optPrices;
-    }
-    public void setOptPrices(TreeMap<Integer, Discount> optPrices) {
-        this.optPrices = optPrices;
-    }
 
     public final ArrayList<String> getImages() {
         if (images != null) return images;
         return new ArrayList<String>();
-    }
-    public void setImages(ArrayList<String> images) {
-        this.images = images;
-    }
-
-    public boolean isFavorite() {
-        return isFavorite;
-    }
-    public void setFavorite(boolean favorite) {
-        isFavorite = favorite;
-    }
-
-    public boolean isInCart() {
-        return isInCart;
-    }
-    public void setInCart(boolean inCart) {
-        isInCart = inCart;
     }
 
     /*===   |   ===*/
