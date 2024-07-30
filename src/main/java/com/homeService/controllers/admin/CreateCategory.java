@@ -70,7 +70,7 @@ public class CreateCategory {
             model.addAttribute("saveException", e.getMessage());
             return createCategory;
         }
-        model.addAttribute("categories", categoryService.filterIsForProduct(categoryService.findAll(), false));
+        model.addAttribute("categories", categoryService.findAllByIsForProduct(false));
         return "redirect:/admin/createCategory";
     }
 
